@@ -24,7 +24,7 @@ public class Borrow {
     private Book book;
 
     @ManyToOne
-    @JoinColumn(name = "patron_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "reader_id", referencedColumnName = "id", nullable = false)
     private Reader reader;
 
     @Column(name = "borrowing_date")
