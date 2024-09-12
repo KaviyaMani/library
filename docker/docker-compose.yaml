@@ -1,6 +1,7 @@
+version: '3'
 services:
   library:
-    image: library
+    image: libraryapp
     build: .
     ports:
       - "8080:8080"
@@ -12,10 +13,6 @@ services:
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-    networks:
-      - secure-network
-    cap_add:
-      - CAP_SYS_ADMIN
   mypostgres:
     image: postgres
     restart: always
@@ -25,12 +22,3 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=postgres
       - POSTGRES_DB=library
-    networks:
-      - secure-network
-    volumes:
-      - postgres-volume:/var/lib/postgresql/data
-
-networks:
-  secure-network:
-volumes:
-  postgres-volume:
